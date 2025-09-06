@@ -1,42 +1,38 @@
 function [blendA, blendB] = exercicio2(NG)
 
-% NG: numero do grupo
-NG = 5;
+  % NG: numero do grupo
 
-% nao alterar: inicio
-es = 1;
-imax = 20; 
-% nao alterar: fim
+  % nao alterar: inicio
+  es = 1;
+  imax = 20;
+  pkg load optim
+  % nao alterar: fim
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% digite seu codigo aqui
-f = [10,2*NG];
-x0 = [1,1]';'
+  % Custos
+  c = [10, 2*NG];   % custo do blendA e blendB
 
-A = [-0.30, -0.20;
-    -0.20, -0.25;
-    -0.25, -0.30];
+  % Restricoes (A * x >= b)
+  A = [-0.3, -0.2;   % polietileno
+       -0.2, -0.25;  % PLA
+       -0.25, -0.3]; % polipropileno
 
-b = [-15;
-    -10;
-    -12];
+  b = [-15; -10; -12];
 
-Aeq = [];
-beq = [];
+  % limites das variáveis
+  lb = [0; 0];
+  ub = [20; 50];
 
-ub = [20; 50];
-lb = [0; 0];
+  % resolve PL
+  [x, fval, info] = glpk(c, A, b, lb, ub, "UUU", "CCC");
 
-x = linprog(f, A, b, Aeq, beq, lb, ub);
-x = x';
+  %%%%%%%%%%%%%%%%%%%%%%%%%%
 
+  % mantem essas duas linhas finais
+  blendA = x(1);
+  blendB = x(2);
 
-% mantenha essas duas linhas finais
-
-blendA = x(1);
-blendB = x(2);
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 endfunction
