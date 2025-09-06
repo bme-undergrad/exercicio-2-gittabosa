@@ -2,11 +2,11 @@ function [blendA, blendB] = exercicio2(NG)
 
   % NG: numero do grupo
 
-  % nao alterar: inicio
-  es = 1;
-  imax = 20;
-  pkg load optim
-  % nao alterar: fim
+% nao alterar: inicio
+es = 1;
+imax = 20; 
+pkg load optim
+% nao alterar: fim
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%
 
