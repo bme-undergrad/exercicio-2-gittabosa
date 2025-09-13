@@ -10,19 +10,18 @@ function [blendA, blendB] = exercicio2(NG)
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-NG = 5;
-custos = [10, 2*NG];   % custo do blendA e blendB
+  f = [10, 2*NG];   % custo de blend A e blend B
 
-A = [-0.3, -0.2;   % polietileno
-       -0.2, -0.25;  % PLA
-       -0.25, -0.3]; % polipropileno
+  A = [-0.3, -0.2;   % polietileno >= 15
+       -0.2, -0.25;  % PLA >= 10
+       -0.25, -0.3]; % polipropileno >= 12
 
-b = [-15; -10; -12];
+  b = [-15; -10; -12];
 
-lb = [0; 0];
-ub = [20; 50];
+  lb = [0; 0];
+  ub = [20; 50];
 
-[x, fval, info] = glpk(c, A, b, lb, ub, "UUU", "CCC");
+  [x, fval, info] = linprog(c, A, b, [], [], lb, ub);
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%
 
