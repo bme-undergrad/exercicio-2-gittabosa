@@ -6,7 +6,6 @@ NG = 5;
 % nao alterar: inicio
 es = 1;
 imax = 20; 
-pkg load optim
 % nao alterar: fim
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
