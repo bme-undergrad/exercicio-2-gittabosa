@@ -1,4 +1,4 @@
-function [blendA, blendB] = exercicio2(NG)
+function [blendA, blendB] = exercicio2(5)
 
   % NG: numero do grupo
 
@@ -10,24 +10,18 @@ function [blendA, blendB] = exercicio2(NG)
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  % Custos (minimizar custo total)
-  c = [10; 2*NG];   % <- vetor coluna
+f = [10; 2*5];
 
-  % Restricoes do tipo A*x <= b
-  A = [-0.3, -0.2;   % polietileno >= 15
-       -0.2, -0.25;  % PLA >= 10
-       -0.25, -0.3]; % polipropileno >= 12
+A = [-0.3, -0.2;   
+    -0.2, -0.25;
+    -0.25, -0.3];
 
-  b = [-15; 
-      -10; 
-      -12];
+b = [-15; -10; -12];
 
-  % Limites das variáveis
-  lb = [0; 0];
-  ub = [20; 50];
+lb = [0; 0];
+ub = [20; 50];
 
-  % resolve o problema de PL
-  [x, fval, info] = linprog(c, A, b, [], [], lb, ub);
+x = linprog(c, A, b, [], [], lb, ub);
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%
 
