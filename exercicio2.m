@@ -1,4 +1,4 @@
-function [blendA, blendB] = exercicio2(5)
+function [blendA, blendB] = exercicio2(NG)
 
   % NG: numero do grupo
 
